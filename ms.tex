@@ -79,7 +79,7 @@ Foundation.
   Berkeley, CA 94720, USA}
 
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
 
@@ -90,68 +90,122 @@ rid of them.
 
 \keywords{instrumentation}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}\label{sec:intro}
 
-I'll keep the first paragraph so there are some references -- also
-because it's cool. Jupiter analogs orbiting other stars represent the first signposts of
-true Solar System analogs, and the eccentricity distribution of these
-planets with $a>3$ AU will reveal how rare or frequent true Jupiter
-analogs are. To date, only 9 ``Jupiter analogs" have been
-well-characterized in the peer reviewed literature\footnote{HD
-  13931$b$ \citep{2010ApJ...721.1467H}, HD 72659$b$
-  \citep{2011A&A...527A..63M}, 55 Cnc $d$ \citep{2002ApJ...581.1375M},
-  HD 134987$c$ \citep{2010MNRAS.403.1703J}, HD 154345$b$ \citep[but
-    with possibility of being an activity cycle-induced
-    signal]{2008ApJ...683L..63W}, $\mu$ Ara $c$
-  \citep{2007A&A...462..769P}, HD 183263$c$
-  \citep{2009ApJ...693.1084W}, HD 187123$c$
-  \citep{2009ApJ...693.1084W}, and GJ 832$b$
-  \citep{2009ApJ...690..743B}.}  \citep[defined here as $P > 8$ years,
-  $4 > M\sin{i} > 0.5\ \mjup$, and $e <
-  0.3$;][exoplanets.org]{wrighteod}. As the duration of existing
-planet searches approach 10--20 years, more and more Jupiter analogs
-will emerge from their longest-observed targets
-\citep{2012arXiv1205.2765W, 2012arXiv1205.5835B}.
+We are going to cite \cite{artigau2014, cunha2014} and \cite{hitran2013}.
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Data and Data Analysis Tools}\label{sec:data}
 
-%----------------------------------------------------------------
-% SME Parameters Table
-\renewcommand{\arraystretch}{1.2} % more row spacing for the table
-\begin{deluxetable}{lc}
-\tabletypesize{\scriptsize}
-\tablecaption{STELLAR PARAMETERS\label{smetable}}
-\tablewidth{180pt}
-\tablehead{
-  \colhead{Parameter} & \colhead{Value~~}
-}
-\startdata
-~~Spectral type\tablenotemark{a} & K0 V ~~ \\
-~~Distance (pc)\tablenotemark{a} & 44.0 $\pm$ 2.1 ~~ \\
-~~$V$ & 8.661 $\pm$ 0.013 ~~ \\
-%$B-V$           &   ~~ \\ % not seen B-V in Jeff's SME file
-~~$T_{\mbox{eff}}$ (K) & 5448 $\pm $44 ~~ \\
-~~$\log{g}$ & 4.511 $\pm$ 0.024 ~~ \\
-~~$[$Fe/H$]$ & 0.336 $\pm$ 0.030 ~~ \\
-%~~$v\sin{i}$ (k\mps) & 0.14 $\pm$ 0.5 ~~ \\ % no detection available
-~~BC & -0.144 ~~ \\
-~~$M_{\mbox{bol}}$ & 5.301 ~~ \\
-~~$L_{\star}$ ($L_{\odot}$) & 0.590 $\pm$ 0.058 ~~ \\
-~~$R_{\star}$ ($R_{\odot}$) & 0.901 $\pm$ 0.015 ~~ \\
-~~$M_{\star}$ ($\msol$) & 1.000 $\pm$ 0.017 ~~ \\
-~~$v\sin{i}$ & $<1$ k\mps ~~ \\
-~~Age\tablenotemark{b}  & $\sim 7$ Gyr ~~
-%S$_{HK}$         &   ~~ \\
-%log$R'_{HK}$     &   ~~ \\
-%$P_{rot}$ (days) &
-\enddata
-\tablenotetext{a}{\cite{esa1997,vanleeuwen2008}.}
-\tablenotetext{b}{\cite{svalue2010}, see section.}
-\end{deluxetable}
-%----------------------------------------------------------------
+Introduction to Keck/HIRES CPS data, data reduction, Doppler code. Our
+adoption of Doppler code.
+
+Introduction to the standard star(s) in this paper?
+
+ZZZ Table: standard star stellar properties? esp. coordinates to
+highlight BC ranges?
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Effects of Telluric Lines}\label{sec:effects}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Simulated Data}
+
+This is where TERRASPEC got introduced.
+
+ZZZ Plots:
+
+- telluric line atlas in the optical? just to demonstrate where they are.
+
+- telluric free simulations to demonstrate RV precision, vs. year,
+vs. BC
+
+- telluric injected simulations to demonstrate effects, vs. year, vs. BC
+
+- RV vs. BC for chunks with and without telluric lines before and
+after injection
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{On-Sky Data}
+
+Should this be the first?
+
+ZZZ Plots:
+
+- RV vs. year/time, RV vs. BC
+
+- RV from chunks with and without telluric lines, vs. BC
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Where and How Telluric Lines Enter the Data}
+
+Should this subsection be moved to the first?
+It enters the epoch data as well as the empirically derived stellar template.
+
+ZZZ Plots:
+
+- fitting plots showing data (with telluric highlighted) and DSST
+(tellurics highlighted) and the mismatch
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Correcting for the Effects of Telluric Lines}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Masking out the Telluric Lines}
+
+ZZZ Plot:
+
+- Illustration of choice of mask
+
+- RV vs. BC before and after for all, telluric, and non-telluric chunks
+
+- simulation results showing no aliases introduced by masking
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Removing the Telluric Contamination from Stellar Templates}
+
+ZZZ Plot:
+
+- selected chunk before and after cleaning
+
+- ?RV vs. BC using cleaned template, no masking, single mask?, double mask?
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Modeling Telluric Lines in the Star$+$Iodine Spectra}
+
+ZZZ Plot:
+
+- RV vs. BC using cleaned template plus full telluric modeling
+
+- RV vs. BC using cleaned template plus full modeling plus some masking?
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Results for A Different RV Standard Star}
+
+I think this is a must! At least one more star, hopefully two.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Summary and Future Work}\label{sec:summary}
+
+Gaussian processes!
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
