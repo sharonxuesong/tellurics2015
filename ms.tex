@@ -1,0 +1,212 @@
+% Telluric modeling in Keck/HIRES iodine spectra
+
+\documentclass{emulateapj}
+\usepackage{amsmath,amssymb}
+\usepackage{xspace}
+\usepackage{graphicx}
+\bibliographystyle{apj}
+\usepackage{epstopdf}
+\usepackage{graphicx}
+\usepackage{epsfig}
+\usepackage{natbib}
+\citestyle{aa}
+\usepackage{verbatim}
+\usepackage{morefloats} % somehow need this to have lots of figures
+                        % and tables?
+% for attractive links:
+\usepackage[colorlinks,urlcolor=blue,citecolor=black,linkcolor=blue]{hyperref}
+%\usepackage[nolists]{endfloat} % put floats at end - doesn't work
+\interfootnotelinepenalty=10000 % Do not want cross-page footnote!
+
+% chinese character for name
+\usepackage{CJK}
+
+\def\beq{\begin{equation}}
+\def\eeq{\end{equation}}
+\def\bcm{\begin{comment}}
+\def\ecm{\end{comment}}
+\def\mps{m~s$^{-1}$}
+\def\msini{M\sin{i}}
+\def\mjup{M_{\rm Jup}}
+\def\msol{M_{\odot}}
+
+\slugcomment{}
+\shorttitle{}
+\shortauthors{}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{CJK*}{UTF8}{gbsn}
+
+\title
+{
+The Effects of Telluric Lines in Radial Velocity Searches for Planets with Iodine
+Cell as Calibrators\altaffilmark{1}
+}
+
+\altaffiltext{1}
+{
+Based on observations observations obtained at the Keck Observatory, which is operated
+by the University of California.  The Keck Observatory was made
+possible by the generous financial support of the W. M. Keck
+Foundation.
+}
+
+\author{Sharon Xuesong Wang (王雪凇)\altaffilmark{2,3},
+  Jason T. Wright\altaffilmark{2,3}} % primary work force
+\author{Chad Bender\altaffilmark{2,3}} % lots of help with TERRASPEC
+                                % and consultation on telluric lines
+\author{Andrew W. Howard\altaffilmark{4}} % Keck
+\author{Geoffrey W. Marcy\altaffilmark{5}} % Keck
+\author{Howard Isaacson\altaffilmark{5}} % Keck
+\author{Suvrath Mahadevan\altaffilmark{2,3}} % comments and suggestions
+
+
+\altaffiltext{2}{Department of Astronomy and Astrophysics, 525 Davey
+  Laboratory, The Pennsylvania State University, University Park, PA
+  16802, USA; Send correspondence to xxw131@psu.edu and
+  jtwright@astro.psu.edu}
+
+\altaffiltext{3}{Center for Exoplanets and Habitable Worlds, 525 Davey
+  Laboratory, The Pennsylvania State University, University Park, PA
+  16802, USA}
+
+\altaffiltext{4}{Hawaii, USA}
+
+\altaffiltext{5}{Department of Astronomy, University of California,
+  Berkeley, CA 94720, USA}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+
+Tellurics are bad and you really don't want them. Here's how to get
+rid of them.
+
+\end{abstract}
+
+\keywords{instrumentation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}\label{sec:intro}
+
+I'll keep the first paragraph so there are some references -- also
+because it's cool. Jupiter analogs orbiting other stars represent the first signposts of
+true Solar System analogs, and the eccentricity distribution of these
+planets with $a>3$ AU will reveal how rare or frequent true Jupiter
+analogs are. To date, only 9 ``Jupiter analogs" have been
+well-characterized in the peer reviewed literature\footnote{HD
+  13931$b$ \citep{2010ApJ...721.1467H}, HD 72659$b$
+  \citep{2011A&A...527A..63M}, 55 Cnc $d$ \citep{2002ApJ...581.1375M},
+  HD 134987$c$ \citep{2010MNRAS.403.1703J}, HD 154345$b$ \citep[but
+    with possibility of being an activity cycle-induced
+    signal]{2008ApJ...683L..63W}, $\mu$ Ara $c$
+  \citep{2007A&A...462..769P}, HD 183263$c$
+  \citep{2009ApJ...693.1084W}, HD 187123$c$
+  \citep{2009ApJ...693.1084W}, and GJ 832$b$
+  \citep{2009ApJ...690..743B}.}  \citep[defined here as $P > 8$ years,
+  $4 > M\sin{i} > 0.5\ \mjup$, and $e <
+  0.3$;][exoplanets.org]{wrighteod}. As the duration of existing
+planet searches approach 10--20 years, more and more Jupiter analogs
+will emerge from their longest-observed targets
+\citep{2012arXiv1205.2765W, 2012arXiv1205.5835B}.
+
+
+
+%----------------------------------------------------------------
+% SME Parameters Table
+\renewcommand{\arraystretch}{1.2} % more row spacing for the table
+\begin{deluxetable}{lc}
+\tabletypesize{\scriptsize}
+\tablecaption{STELLAR PARAMETERS\label{smetable}}
+\tablewidth{180pt}
+\tablehead{
+  \colhead{Parameter} & \colhead{Value~~}
+}
+\startdata
+~~Spectral type\tablenotemark{a} & K0 V ~~ \\
+~~Distance (pc)\tablenotemark{a} & 44.0 $\pm$ 2.1 ~~ \\
+~~$V$ & 8.661 $\pm$ 0.013 ~~ \\
+%$B-V$           &   ~~ \\ % not seen B-V in Jeff's SME file
+~~$T_{\mbox{eff}}$ (K) & 5448 $\pm $44 ~~ \\
+~~$\log{g}$ & 4.511 $\pm$ 0.024 ~~ \\
+~~$[$Fe/H$]$ & 0.336 $\pm$ 0.030 ~~ \\
+%~~$v\sin{i}$ (k\mps) & 0.14 $\pm$ 0.5 ~~ \\ % no detection available
+~~BC & -0.144 ~~ \\
+~~$M_{\mbox{bol}}$ & 5.301 ~~ \\
+~~$L_{\star}$ ($L_{\odot}$) & 0.590 $\pm$ 0.058 ~~ \\
+~~$R_{\star}$ ($R_{\odot}$) & 0.901 $\pm$ 0.015 ~~ \\
+~~$M_{\star}$ ($\msol$) & 1.000 $\pm$ 0.017 ~~ \\
+~~$v\sin{i}$ & $<1$ k\mps ~~ \\
+~~Age\tablenotemark{b}  & $\sim 7$ Gyr ~~
+%S$_{HK}$         &   ~~ \\
+%log$R'_{HK}$     &   ~~ \\
+%$P_{rot}$ (days) &
+\enddata
+\tablenotetext{a}{\cite{esa1997,vanleeuwen2008}.}
+\tablenotetext{b}{\cite{svalue2010}, see section.}
+\end{deluxetable}
+%----------------------------------------------------------------
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Then Acknowledgement
+% Thank John Johnson for providing CPS Doppler code.
+\acknowledgements
+% John
+The authors thank John A. Johnson for providing a copy of his Doppler
+code and his help with our incorporation of the code into the HET
+pipeline.  The authors also thank Debra Fischer for her assistance in
+this regard.
+
+% CEHW
+This work was partially supported by funding from the Center for
+Exoplanets and Habitable Worlds, which is supported by the
+Pennsylvania State University, the Eberly College of Science, and the
+Pennsylvania Space Grant Consortium.
+
+% Financial support acknowledgement
+The authors appreciate the significant Keck observing time and
+associated funding support from NASA for the study of long period
+planets and mulitplanet systems.
+%
+J.T.W.\ and S.X.W.\ acknowledge support from NASA Origins of Solar
+Systems grant NNX10AI52G.
+
+% Keck
+The work herein is based on observations obtained at the W. M. Keck
+Observatory, which is operated jointly by the University of California
+and the California Institute of Technology.  The Keck Observatory was
+made possible by the generous financial support of the W.M. Keck
+Foundation.  We wish to recognize and acknowledge the very significant
+cultural role and reverence that the summit of Mauna Kea has always
+had within the indigenous Hawaiian community.  We are most fortunate
+to have the opportunity to conduct observations from this mountain.
+
+% HET
+The Hobby-Eberly Telescope is a joint project of the University of
+Texas at Austin, the Pennsylvania State University, Stanford
+University, Ludwig Maximillians Universit\"at M\"unchen, and Georg
+August Universit\"at G\"ottingen. The HET is named in honor of its
+principal benefactors, William P. Hobby and Robert E. Eberly.
+
+% ADS
+This work has made use NASA’s Astrophysics Data System Bibliographic Services.
+
+
+\end{CJK*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The Bibliography
+%\bibliographystyle{apj} % (uses file "xxx.bst")
+%\bibliography{mn-jour,references}%,bootstrap-ref}
+\bibliography{references}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}
