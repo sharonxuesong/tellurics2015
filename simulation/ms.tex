@@ -1,4 +1,4 @@
-% Telluric modeling in Keck/HIRES iodine spectra
+% Effects of telluric lines, as demonstrated via simulation
 
 \documentclass{emulateapj}
 \usepackage{amsmath,amssymb}
@@ -100,30 +100,55 @@ We are going to cite \cite{artigau2014, cunha2014} and \cite{hitran2013}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Data and Data Analysis Tools}\label{sec:data}
+\section{Methodology}\label{sec:method}
 
-Introduction to Keck/HIRES CPS data, data reduction, Doppler code. Our
-adoption of Doppler code.
-
-Introduction to the standard star(s) in this paper?
-
-ZZZ Table: standard star stellar properties? esp. coordinates to
-highlight BC ranges?
+Introduction to Keck/HIRES CPS data,
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Effects of Telluric Lines}\label{sec:effects}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Simulated Keck/HIRES Spectra}
+
+ZZZ Plots:
+
+- comparison between simulated and observed Keck/HIRES spectra: blaze,
+and zoom in.
+
+- comparison between SME stellar template and empirical, deconvolved
+template.
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Simulated Data}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Injection of Telluric Lines}
 
-This is where TERRASPEC got introduced.
+Description of TERRASPEC.
 
 ZZZ Plots:
 
 - telluric line atlas in the optical? just to demonstrate where they are.
+
+- simulated observation and template with injected tellurics,
+overplotted with clean simulated spectra, which would also demonstrate
+that due to BC, lines will pull on each other.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Extraction of Radial Velocities}
+
+Introduction to Doppler code and relevant adoption part for the
+simulation.
+
+How the end product RVs are computed (vanking, or other weighting schemes).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Results}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Effects of Telluric Lines on RV Precision}
+
+ZZZ Plots:
 
 - telluric free simulations to demonstrate RV precision, vs. year,
 vs. BC
@@ -133,79 +158,25 @@ vs. BC
 - RV vs. BC for chunks with and without telluric lines before and
 after injection
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{On-Sky Data}
-
-Should this be the first?
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Remedies and Their Effectiveness}
 
 ZZZ Plots:
 
-- RV vs. year/time, RV vs. BC
+- demonstration of effectiveness and ineffectiveness of double masking.
 
-- RV from chunks with and without telluric lines, vs. BC
+- demonstration of effectiveness of a clean template and forward
+modeling tellurics.
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Where and How Telluric Lines Enter the Data}
-
-Should this subsection be moved to the first?
-It enters the epoch data as well as the empirically derived stellar template.
-
-ZZZ Plots:
-
-- fitting plots showing data (with telluric highlighted) and DSST
-(tellurics highlighted) and the mismatch
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Correcting for the Effects of Telluric Lines}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Masking out the Telluric Lines}
-
-ZZZ Plot:
-
-- Illustration of choice of mask
-
-- RV vs. BC before and after for all, telluric, and non-telluric chunks
-
-- simulation results showing no aliases introduced by masking
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Removing the Telluric Contamination from Stellar Templates}
-
-ZZZ Plot:
-
-- selected chunk before and after cleaning
-
-- ?RV vs. BC using cleaned template, no masking, single mask?, double mask?
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Modeling Telluric Lines in the Star$+$Iodine Spectra}
-
-ZZZ Plot:
-
-- RV vs. BC using cleaned template plus full telluric modeling
-
-- RV vs. BC using cleaned template plus full modeling plus some masking?
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Results for A Different RV Standard Star}
-
-I think this is a must! At least one more star, hopefully two.
+- demonstration of precision required for modeling tellurics, and
+maximum tolerance for template `cleaness'. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary and Future Work}\label{sec:summary}
 
-Gaussian processes!
+Work on actual observations!
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
