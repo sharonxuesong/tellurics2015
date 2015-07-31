@@ -1,0 +1,266 @@
+% Telluric modeling in Keck/HIRES iodine spectra
+
+\documentclass{emulateapj}
+\usepackage{amsmath,amssymb}
+\usepackage{xspace}
+\usepackage{graphicx}
+\bibliographystyle{apj}
+\usepackage{epstopdf}
+\usepackage{graphicx}
+\usepackage{epsfig}
+\usepackage{natbib}
+\citestyle{aa}
+\usepackage{verbatim}
+\usepackage{morefloats} % somehow need this to have lots of figures
+                        % and tables?
+% for attractive links:
+\usepackage[colorlinks,urlcolor=blue,citecolor=black,linkcolor=blue]{hyperref}
+%\usepackage[nolists]{endfloat} % put floats at end - doesn't work
+\interfootnotelinepenalty=10000 % Do not want cross-page footnote!
+
+% chinese character for name
+\usepackage{CJK}
+
+\def\beq{\begin{equation}}
+\def\eeq{\end{equation}}
+\def\bcm{\begin{comment}}
+\def\ecm{\end{comment}}
+\def\mps{m~s$^{-1}$}
+\def\msini{M\sin{i}}
+\def\mjup{M_{\rm Jup}}
+\def\msol{M_{\odot}}
+
+\slugcomment{}
+\shorttitle{}
+\shortauthors{}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{CJK*}{UTF8}{gbsn}
+
+\title
+{
+The Effects of Telluric Lines in Radial Velocity Searches for Planets with Iodine
+Cell as Calibrators\altaffilmark{1}
+}
+
+\altaffiltext{1}
+{
+Based on observations observations obtained at the Keck Observatory, which is operated
+by the University of California.  The Keck Observatory was made
+possible by the generous financial support of the W. M. Keck
+Foundation.
+}
+
+\author{Sharon Xuesong Wang (王雪凇)\altaffilmark{2,3},
+  Jason T. Wright\altaffilmark{2,3}} % primary work force
+\author{Chad Bender\altaffilmark{2,3}} % lots of help with TERRASPEC
+                                % and consultation on telluric lines
+\author{Andrew W. Howard\altaffilmark{4}} % Keck
+\author{Geoffrey W. Marcy\altaffilmark{5}} % Keck
+\author{Howard Isaacson\altaffilmark{5}} % Keck
+\author{Suvrath Mahadevan\altaffilmark{2,3}} % comments and suggestions
+
+
+\altaffiltext{2}{Department of Astronomy and Astrophysics, 525 Davey
+  Laboratory, The Pennsylvania State University, University Park, PA
+  16802, USA; Send correspondence to xxw131@psu.edu and
+  jtwright@astro.psu.edu}
+
+\altaffiltext{3}{Center for Exoplanets and Habitable Worlds, 525 Davey
+  Laboratory, The Pennsylvania State University, University Park, PA
+  16802, USA}
+
+\altaffiltext{4}{Hawaii, USA}
+
+\altaffiltext{5}{Department of Astronomy, University of California,
+  Berkeley, CA 94720, USA}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+
+Tellurics are bad and you really don't want them. Here's how to get
+rid of them.
+
+\end{abstract}
+
+\keywords{instrumentation}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}\label{sec:intro}
+
+We are going to cite \cite{artigau2014, cunha2014} and \cite{hitran2013}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Simulating Keck/HIRES Spectra}\label{sec:simulating}
+
+Introduction to Keck/HIRES CPS data, data reduction, Doppler code. Our
+adoption of Doppler code.
+
+Introduction to the standard star(s) in this paper?
+
+ZZZ Table: standard star stellar properties? esp. coordinates to
+highlight BC ranges?
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Injecting Telluric Lines}\label{sec:injecting}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Simulated Data}
+
+This is where TERRASPEC got introduced.
+
+ZZZ Plots:
+
+- telluric line atlas in the optical? just to demonstrate where they are.
+
+- telluric free simulations to demonstrate RV precision, vs. year,
+vs. BC
+
+- telluric injected simulations to demonstrate effects, vs. year, vs. BC
+
+- RV vs. BC for chunks with and without telluric lines before and
+after injection
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{On-Sky Data}
+
+Should this be the first?
+
+ZZZ Plots:
+
+- RV vs. year/time, RV vs. BC
+
+- RV from chunks with and without telluric lines, vs. BC
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Where and How Telluric Lines Enter the Data}
+
+Should this subsection be moved to the first?
+It enters the epoch data as well as the empirically derived stellar template.
+
+ZZZ Plots:
+
+- fitting plots showing data (with telluric highlighted) and DSST
+(tellurics highlighted) and the mismatch
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Correcting for the Effects of Telluric Lines}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Masking out the Telluric Lines}
+
+ZZZ Plot:
+
+- Illustration of choice of mask
+
+- RV vs. BC before and after for all, telluric, and non-telluric chunks
+
+- simulation results showing no aliases introduced by masking
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Removing the Telluric Contamination from Stellar Templates}
+
+ZZZ Plot:
+
+- selected chunk before and after cleaning
+
+- ?RV vs. BC using cleaned template, no masking, single mask?, double mask?
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Modeling Telluric Lines in the Star$+$Iodine Spectra}
+
+ZZZ Plot:
+
+- RV vs. BC using cleaned template plus full telluric modeling
+
+- RV vs. BC using cleaned template plus full modeling plus some masking?
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Results for A Different RV Standard Star}
+
+I think this is a must! At least one more star, hopefully two.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Summary and Future Work}\label{sec:summary}
+
+Gaussian processes!
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Then Acknowledgement
+% Thank John Johnson for providing CPS Doppler code.
+\acknowledgements
+% John
+The authors thank John A. Johnson for providing a copy of his Doppler
+code and his help with our incorporation of the code into the HET
+pipeline.  The authors also thank Debra Fischer for her assistance in
+this regard.
+
+% CEHW
+This work was partially supported by funding from the Center for
+Exoplanets and Habitable Worlds, which is supported by the
+Pennsylvania State University, the Eberly College of Science, and the
+Pennsylvania Space Grant Consortium.
+
+% Financial support acknowledgement
+The authors appreciate the significant Keck observing time and
+associated funding support from NASA for the study of long period
+planets and mulitplanet systems.
+%
+J.T.W.\ and S.X.W.\ acknowledge support from NASA Origins of Solar
+Systems grant NNX10AI52G.
+
+% Keck
+The work herein is based on observations obtained at the W. M. Keck
+Observatory, which is operated jointly by the University of California
+and the California Institute of Technology.  The Keck Observatory was
+made possible by the generous financial support of the W.M. Keck
+Foundation.  We wish to recognize and acknowledge the very significant
+cultural role and reverence that the summit of Mauna Kea has always
+had within the indigenous Hawaiian community.  We are most fortunate
+to have the opportunity to conduct observations from this mountain.
+
+% HET
+The Hobby-Eberly Telescope is a joint project of the University of
+Texas at Austin, the Pennsylvania State University, Stanford
+University, Ludwig Maximillians Universit\"at M\"unchen, and Georg
+August Universit\"at G\"ottingen. The HET is named in honor of its
+principal benefactors, William P. Hobby and Robert E. Eberly.
+
+% ADS
+This work has made use NASA’s Astrophysics Data System Bibliographic Services.
+
+
+\end{CJK*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The Bibliography
+%\bibliographystyle{apj} % (uses file "xxx.bst")
+%\bibliography{mn-jour,references}%,bootstrap-ref}
+\bibliography{references}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}
