@@ -83,7 +83,7 @@ Foundation.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
 
-Tellurics are bad and you really don't want them. Here's how to get
+Tellurics are bad and you really don't want them. Here's why and how to get
 rid of them.
 
 \end{abstract}
@@ -95,85 +95,127 @@ rid of them.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}\label{sec:intro}
 
-We are going to cite \cite{artigau2014, cunha2014} and
-\cite{hitran2013}.
+The radial velocity method has contributed to hundreds of planetary
+discoveries and Kepler follow-ups. The current precision is at 1--2
+m/s, with limiting factor being stellar activity and RV systematics,
+instrumental or software.
 
+One of the contributing term comes from Earth's atmospheric
+absorption, which imprints telluric lines onto the observed stellar
+spectrum. Deep tellurics are thrown out, while micro-tellurics
+(define; \citealt{hitran2013}) remain and they are very hard to deal
+with. The contamination from the micro-telluric lines has an adverse
+effect on the RV precision, and such effect is characterized for the
+HARPS-N spectrograph, which is ThAr calibrated, by \cite{artigau2014}
+and \cite{cunha2014}.
+
+In this paper, we characterize and discuss the remedies for
+micro-telluric lines in the context of iodine-calibarted precise
+RVs. We first quantify the effects of micro-telluric contamination on
+RV precision through simulation. Then we discuss possible remedies and
+their effectiveness. Finally we discuss implementation on real data
+and future work.
+
+\begin{comment}
 Jason's suggestions:
-
 - run tau Ceti as target #2
-
 - don't show our classic before+after+difference RV vs. BC, just show
 the difference, especially the talk
-
 - show actual data for sig Dra RV vs. BC of Keck, to show that this is
 real, it should be standard to plot RV vs. BC to check systematics
 (i.e. tellurics)
-
 - Mention Vogt APF paper sig Dra planet.
+\end{comment}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Methodology}\label{sec:method}
+\section{Impacts of Micro-tellurics on RV Precision}\label{sec:method}
 
-Introduction to Keck/HIRES CPS data,
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Simulated Keck/HIRES Spectra}
-
-ZZZ Plots:
-
-- comparison between simulated and observed Keck/HIRES spectra: blaze,
-and zoom in.
-
-- comparison between SME stellar template and empirical, deconvolved
-template.
+We performed end-to-end simulation of Keck data and analysis process
+to access the impacts of micro-tellurics on RV precision. We use Keck
+to demonstrate this because Keck has the highest precision. We chose
+sig Dra and tau Ceti as our stars because they are RV standards which
+have been observed hundreds of times with Keck/HIRES, and are also
+favorite RV standards at other precise RV facilities. I really want to
+add an M dwarf standard here as well!
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Injection of Telluric Lines}
+\subsection{Methodology}
 
-Description of TERRASPEC.
+We simulated Keck observations on sig Dra and tau Ceti by using
+synthetic stellar spectra of their respective spectral types (?) using
+SME (ZZZ cite Valenti and Fischer). We simulated one spectrum for each
+actual observed spectrum taken at Keck through the CPS programs. The
+synthetic stellar spectra is multiplied with the iodine atlas to
+create the standard iodine$+$ star RV observations. The multiplied
+spectrum is then multiplied with the blaze function and convolved with
+the observed spectral PSF, both derived from real observations for
+each night. Poisson noise is added.
 
-ZZZ Plots:
+We then forward model the simulated spectra to extract RVs using the
+CPS Keck code (ZZZ cite Johnson and Howard). We used the synthetic
+stellar spectrum as the input stellar template. In reality, stellar
+templates are derived from observed stellar spectra via deconvolution,
+which would introduce additional errors. Using the same synthetic
+stellar spectrum would eliminate such errors and isolate the problem
+to telluric lines only.
 
-- telluric line atlas in the optical? just to demonstrate where they are.
-
-- simulated observation and template with injected tellurics,
-overplotted with clean simulated spectra, which would also demonstrate
-that due to BC, lines will pull on each other.
+We ran two sets of simulations: control and contaminated. In the
+control, we only had stellar spectrum and iodine spectrum. In the
+contaminated, we added in simulated telluric lines in the simulated
+observed spectrum. The telluric lines were generated using TERRASPEC
+(ZZZ cite Bender). We adopted the typical Mauna Kea atmospheric
+condition (temperature and pressure profiles) and typical oxygen
+column density (which in realiaty flucturate very little anyway). For
+simplicity, we assumed the same water column density for every
+observation, which is pwv$=1$mm, a little bit humid than a typical
+Mauna Kea night (true? I think this is actually pretty typical). The
+pair of simulated control and contaminated spectra have the same added
+Poisson noise, and therefore any RV differences derived from these two
+sets of simulation would reveal the net effect of telluric
+contamination.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Extraction of Radial Velocities}
+\subsection{Results}
 
-Introduction to Doppler code and relevant adoption part for the
-simulation.
+Plots: RV difference vs. BC for sig Dra and tau Ceti. And M stars.
 
-How the end product RVs are computed (vanking, or other weighting schemes).
+Micro-tellurics in the iodine region introduces RMS$=0.6$ m/s scatter
+for GK stars (RV systematic error added in quadrature). Leaving
+untreated, this would define the precision floor.
+
+Additionally, it manifests as spurious signal at periods of a sidereal
+year and harmonics, with an amplitude of 20 cm/s. This would affect
+our ability to detect super-Earth in the habitable zone of GK stars
+(Earth's signal is 8 cm/s). We have seen such spurious signal in Keck
+data on many stars, and telluric contamination is one of the
+contributing factors (see discussion for other factors).
+
+For M stars... (probably worse)
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Results}
+\section{Remedies and Effectiveness}
+
+Plots: effects of full forward modeling (RV difference between modeled
+and contaminated, modeled and control).
+
+We demonstrate the effectiveness of several remedies. First, double
+masking: probably a terrible idea. Describe the effects
+quantitatively. Second, modeling plus cleaning tempaltes: probably
+effective. Modeling plus some masking?
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Effects of Telluric Lines on RV Precision}
 
-ZZZ Plots:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Discussion}
 
-- telluric free simulations to demonstrate RV precision, vs. year,
-vs. BC
 
-- telluric injected simulations to demonstrate effects, vs. year, vs. BC
-
-- RV vs. BC for chunks with and without telluric lines before and
-after injection
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Remedies and Their Effectiveness}
 
 ZZZ Plots:
 
