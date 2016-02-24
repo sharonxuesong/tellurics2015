@@ -109,6 +109,10 @@ effect on the RV precision, and such effect is characterized for the
 HARPS-N spectrograph, which is ThAr calibrated, by \cite{artigau2014}
 and \cite{cunha2014}.
 
+Modeling telluric lines itself is a challeging task. ZZZ Cite the
+paper TERRASPEC and simular softwares and their 2\% modeling
+precision. Cite Lockwood, Bender et al.\ for 1\% in L band. ZZZ
+
 In this paper, we characterize and discuss the remedies for
 micro-telluric lines in the context of iodine-calibarted precise
 RVs. We first quantify the effects of micro-telluric contamination on
@@ -205,34 +209,41 @@ Plots: effects of full forward modeling (RV difference between modeled
 and contaminated, modeled and control).
 
 We demonstrate the effectiveness of several remedies. First, double
-masking: probably a terrible idea. Describe the effects
-quantitatively. Second, modeling plus cleaning tempaltes: probably
-effective. Modeling plus some masking?
+masking: probably a terrible idea. Throwing away the pixels will make
+the fitter harder to converge, and introduce additional errors on the
+scales larger than the effects of telluric lines
+themselves. Additionally, it is hard to choose a flux cut-off
+level. Throwing away too much would mean unstable solution and lower
+RV precision, but masking too little would mean insufficient
+removal of tellurics.
+
+Second, full forward modeling plus some sort of masking for deep
+lines. This is the most effective way. Modeling precision of
+$\sim$90\% basically bring the adverse effects of tellurics down to
+$<$10 cm/s. 90\% is very easy to achieve -- remember the
+state-of-the-art is 1-2\%, and even consider errors induced by
+modeling residuals caused by atmospheric wind or lack of knowledge on
+linelist or broadening parameters or inaccurate knowledge on atmospheric
+temperature/pressure profiles. The deep lines may not be modeled very
+well. However, the statistical weighting procedure at the very end
+will empirically quantify which chunks behave badly due to ineffective
+modeling of telluric lines and thus throw out or de-weigh the chunks.
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Discussion}
+\section{Discussion and Future Work}\label{sec:future}
 
+In terms of application to real observations, this brings marginal
+improvements to existing Keck data. We tested on sig Dra, tau Ceti,
+and M stars, the differences are...
 
+Important for MINERVA, HRS2, HPF2. Crucial for CARMENES, HPF, EPDS, SHREK,
+ESPRESSO, SPiRou etc. White paper has suggested improvement on line
+lists in HITRAN. EPRV2 has a lot of recommendations. That is the
+future direction.
 
-ZZZ Plots:
-
-- demonstration of effectiveness and ineffectiveness of double masking.
-
-- demonstration of effectiveness of a clean template and forward
-modeling tellurics.
-
-- demonstration of precision required for modeling tellurics, and
-maximum tolerance for template `cleaness'. 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Summary and Future Work}\label{sec:summary}
-
-Work on actual observations!
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
