@@ -120,7 +120,7 @@ contamination, and limitation in data analysis \citep{eprv2015}.
 Traditionally, telluric contamination is not considered as problematic
 for precise RV in the optical. It is certainly a sever source of
 spectral contamination and a bottleneck for achieving higher RV
-precision in the near infra-red region (e.g.,
+precision in the near infra-red (NIR) region (e.g.,
 \citealt{2010ApJ...713..410B}), where a large number of deep water and
 methane lines reside. However, there is only a small wavelength
 range in the optical that has deep telluric lines, and typically such
@@ -146,45 +146,26 @@ concluded that the micro-tellurics have an impact (defined as RMS of
 difference between RVs before and after micro-telluric removal) of
 $\sim$10-20 cm/s for G stars observed with low to moderate air masses,
 but the impact can be substantial in some cases to up to $\sim$0.5-1
-m/s. \cite{artigau2014} uses principal component analysis (PCA) to
+m/s.
+
+\cite{artigau2014} uses principal component analysis (PCA) to
 empirically correct for telluric lines in HARPS-S data (both
 micro-tellurics and the deep lines in the $\sim$630~nm region), and
 combined PCA with rejection masking, they reduced the RV RMS by
-$\sim$20~cm/s (and more significantly for the $\sim$630~nm region).
+$\sim$20~cm/s (and more significantly for the $\sim$630~nm
+region). More recently, \cite{2016AAS...22713719S} characterized the
+effects of telluric contamination and effectiveness of some typical
+remedies (masking and modeling) for emission line-calibarated spectra
+for the optical, broad optical (300-900~nm), and NIR. Their conclusion
+for the optical region is similar to the results in \cite{artigau2014}
+and \cite{cunha2014}.
 
-% I'm here:
-This paper focuses on the adverse effects of telluric contamination
-and its remedies under the context of iodine-calibrated precise RV,
-especially for ``micro-telluric" lines (shallow telluric absorption
-lines with $<1$-3\% depths; \citealt{cunha2014}). As for spectral
-region contaminated with deep telluric lines, typical precise RV
-analysis usually gives 
+This paper characterizes and corrects for the adverse effects of
+telluric contamination under the context of iodine-calibrated precise
+RV, especially for the micro-telluric lines. ZZZ We first describe our
+methodology for characterizing the effects of tellurics in
+Section~\ref{sec:method}, then... ZZZ
 
-Previously, \cite{cunha2014} have characterized the effects of
-micro-telluric contamination and proposed solution for the
-ThAr-calibrated HARPS-S data. 
-
-Modeling telluric lines itself is a challeging task. ZZZ Cite the
-paper TERRASPEC and simular softwares and their 2\% modeling
-precision. Cite Lockwood, Bender et al.\ for 1\% in L band. ZZZ
-
-In this paper, we characterize and discuss the remedies for
-micro-telluric lines in the context of iodine-calibarted precise
-RVs. We first quantify the effects of micro-telluric contamination on
-RV precision through simulation. Then we discuss possible remedies and
-their effectiveness. Finally we discuss implementation on real data
-and future work.
-
-\begin{comment}
-Jason's suggestions:
-- run tau Ceti as target #2
-- don't show our classic before+after+difference RV vs. BC, just show
-the difference, especially the talk
-- show actual data for sig Dra RV vs. BC of Keck, to show that this is
-real, it should be standard to plot RV vs. BC to check systematics
-(i.e. tellurics)
-- Mention Vogt APF paper sig Dra planet.
-\end{comment}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
