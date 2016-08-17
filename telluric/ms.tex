@@ -18,6 +18,12 @@
 %\usepackage[nolists]{endfloat} % put floats at end - doesn't work
 \interfootnotelinepenalty=10000 % Do not want cross-page footnote!
 
+% colored revision
+\usepackage[usenames, dvipsnames]{color}
+
+\usepackage[caption=false]{subfig}
+\usepackage{float}
+
 % chinese character for name
 \usepackage{CJK}
 
@@ -25,11 +31,27 @@
 \def\eeq{\end{equation}}
 \def\bcm{\begin{comment}}
 \def\ecm{\end{comment}}
-\def\mps{m~s$^{-1}$}
+%\def\mps{m~s$^{-1}$}
 \def\msini{M\sin{i}}
 \def\mjup{M_{\rm Jup}}
 \def\msol{M_{\odot}}
 \def\kepler{{\it Kepler}}
+\def\keck{Keck/HIRES}
+\def\hires{Keck/HIRES}
+\def\het{HET/HRS}
+\def\hrs{HET/HRS}
+
+% math
+\def\mps{m/s}
+\def\msini{M\sin{i}}
+\def\chisq{$\chi_{\nu}^2$}
+\def\degree{^{\circ}}
+\def\leq{\leqslant}
+\def\geq{\geqslant}
+
+%%%%%%%%%% commands for highlighted revisions
+%\newcommand{\rev}[1]{\textcolor{Red}{#1}}
+\newcommand{\rev}[1]{\textcolor{Black}{#1}}
 
 \slugcomment{}
 \shorttitle{}
@@ -43,8 +65,8 @@
 
 \title
 {
-The Effects of Telluric Lines in Radial Velocity Searches for Planets with Iodine
-Cells as Calibrators\altaffilmark{1}
+The Effects of Telluric Lines in Radial Velocity Searches\\
+for Planets with Iodine Cells as Calibrators\altaffilmark{1}
 }
 
 \altaffiltext{1}

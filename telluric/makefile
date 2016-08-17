@@ -8,7 +8,7 @@ DVIPDF = dvipdf
 
 all: $(FILE).dvi $(FILE).pdf
 
-$(FILE).dvi : $(FILE).tex $(REF).bib makefile 
+$(FILE).dvi : $(FILE).tex $(REF).bib makefile *.tex
 	$(TEX) $(FILE)
 	$(BIBTEX) $(FILE)
 	$(TEX) $(FILE)
